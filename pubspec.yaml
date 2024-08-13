@@ -1,0 +1,202 @@
+name: flutter_app
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  camera: ^0.10.0+3
+  image_picker: ^0.8.7+4
+  path_provider: ^2.0.11
+  cupertino_icons: ^1.0.6
+  google_fonts: ^6.2.1
+  flutter_image_compress: ^1.1.0
+  image: ^3.0.1
+  permission_handler: ^10.2.0
+  math_expressions: ^2.3.0
+  flutter_advanced_switch: ^3.0.1
+  get: ^4.3.8
+  url_launcher: ^6.0.20
+  sqflite: ^2.0.0+4
+  firebase_core: ^3.1.1
+  firebase_crashlytics: ^4.0.2
+  firebase_analytics: ^11.1.0
+  firebase_performance: ^0.10.0+2
+  shared_preferences: ^2.2.3
+  google_maps_flutter: ^2.1.7
+  http: ^1.2.2
+  uuid: ^4.4.2
+  pdf: ^3.3.0
+  intl: ^0.19.0
+  location: ^4.4.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_svg: ^2.0.10+1
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/vectors/
+#  - assets/vectors/vector_3558_x2.svg
+#  - assets/vectors/battery_7_x2.svg
+#  - assets/vectors/rectangle_58210_x2.svg
+#  - assets/vectors/vector_22_x2.svg
+#  - assets/vectors/image_9_x2.svg
+#  - assets/vectors/rectangle_5807_x2.svg
+#  - assets/vectors/rectangle_5814_x2.svg
+#  - assets/vectors/vector_8_x2.svg
+#  - assets/vectors/rectangle_5839_x2.svg
+#  - assets/vectors/vector_28_x2.svg
+#  - assets/vectors/vector_27_x2.svg
+#  - assets/vectors/image_6_x2.svg
+#  - assets/vectors/rectangle_5825_x2.svg
+#  - assets/vectors/vector_23_x2.svg
+#  - assets/vectors/rectangle_58010_x2.svg
+#  - assets/vectors/rectangle_58311_x2.svg
+#  - assets/vectors/battery_x2.svg
+#  - assets/vectors/rectangle_5819_x2.svg
+#  - assets/vectors/social_icons_x2.svg
+#  - assets/vectors/vector_15_x2.svg
+#  - assets/vectors/home_x2.svg
+#  - assets/vectors/subtract_3_x2.svg
+#  - assets/vectors/vector_3559_x2.svg
+#  - assets/vectors/vector_3556_x2.svg
+#  - assets/images/ellipse_47.png
+#  - assets/images/pngwing_com_1.png
+#  - assets/images/pngegg_11.png
+#  - assets/images/pngtreecalculator_digital_calculator_illustration_45073571.png
+#  - assets/images/pngtreegolden_super_car_with_vector_53612571.png
+#  - assets/images/rectangle_4019.png
+#  - assets/images/pngegg_1.png
+#  - assets/images/pngtreegolden_super_car_with_vector_536125711.png
+#  - assets/vectors/rectangle_5833_x2.svg
+#  - assets/vectors/rectangle_5802_x2.svg
+#  - assets/vectors/rectangle_4017_x2.svg
+#  - assets/vectors/battery_3_x2.svg
+#  - assets/vectors/vector_18_x2.svg
+#  - assets/vectors/bell_x2.svg
+#  - assets/vectors/image_1_x2.svg
+#  - assets/vectors/subtract_x2.svg
+#  - assets/vectors/vector_25_x2.svg
+#  - assets/vectors/rectangle_5824_x2.svg
+#  - assets/vectors/mask_group_x2.svg
+#  - assets/vectors/ellipse_45_x2.svg
+#  - assets/vectors/rectangle_5812_x2.svg
+#  - assets/vectors/polygon_11_x2.svg
+#  - assets/vectors/rectangle_5827_x2.svg
+#  - assets/vectors/image_8_x2.svg
+#  - assets/vectors/rectangle_5803_x2.svg
+#  - assets/vectors/group_78_x2.svg
+#  - assets/vectors/rectangle_58310_x2.svg
+#  - assets/vectors/polygon_1_x2.svg
+#  - assets/vectors/polygon_2_x2.svg
+#  - assets/vectors/battery_6_x2.svg
+#  - assets/vectors/rectangle_58110_x2.svg
+#  - assets/vectors/vector_12_x2.svg
+#  - assets/vectors/polygon_12_x2.svg
+#  - assets/vectors/subtract_2_x2.svg
+#  - assets/vectors/union_1_x2.svg
+#  - assets/vectors/bell_1_x2.svg
+#  - assets/vectors/bell_fill_x2.svg
+#  - assets/vectors/bell_pin_fill_x2.svg
+#  - assets/vectors/vector_16_x2.svg
+#  - assets/vectors/image_3_x2.svg
+#  - assets/vectors/rectangle_5817_x2.svg
+#  - assets/vectors/battery_11_x2.svg
+#  - assets/vectors/rectangle_580_x2.svg
+#  - assets/vectors/rectangle_5829_x2.svg
+#  - assets/vectors/vector_9_x2.svg
+#  - assets/vectors/rectangle_5835_x2.svg
+#  - assets/vectors/vector_3552_x2.svg
+#  - assets/vectors/vector_3553_x2.svg
+#  - assets/vectors/vector_4_x2.svg
+#  - assets/vectors/vector_3551_x2.svg
+#  - assets/vectors/bell_2_x2.svg
+#  - assets/vectors/rectangle_58011_x2.svg
+#  - assets/vectors/rectangle_5813_x2.svg
+#  - assets/vectors/vector_21_x2.svg
+#  - assets/vectors/rectangle_5821_x2.svg
+#  - assets/vectors/rectangle_5836_x2.svg
+#  - assets/vectors/image_4_x2.svg
+#  - assets/vectors/battery_9_x2.svg
+#  - assets/vectors/vector_6_x2.svg
+#  - assets/vectors/home_1_x2.svg
+#  - assets/vectors/folder_fill_1_x2.svg
+#  - assets/vectors/ellipse_451_x2.svg
+#  - assets/vectors/vector_3557_x2.svg
+#  - assets/vectors/group_13_x2.svg
+#  - assets/vectors/union_x2.svg
+#  - assets/vectors/subtract_1_x2.svg
+#  - assets/vectors/vector_35511_x2.svg
+#  - assets/vectors/rectangle_5809_x2.svg
+#  - assets/vectors/rectangle_5811_x2.svg
+#  - assets/vectors/vector_35510_x2.svg
+#  - assets/vectors/vector_30_x2.svg
+#  - assets/vectors/vector_26_x2.svg
+#  - assets/vectors/vector_3554_x2.svg
+#  - assets/vectors/rectangle_5834_x2.svg
+#  - assets/vectors/vector_3555_x2.svg
+#  - assets/vectors/image_2_x2.svg
+#  - assets/vectors/battery_5_x2.svg
+#  - assets/vectors/rectangle_5826_x2.svg
+#  - assets/vectors/vector_355_x2.svg
+#  - assets/vectors/rectangle_58211_x2.svg
+#  - assets/vectors/vector_29_x2.svg
+#  - assets/vectors/vector_3_x2.svg
+#  - assets/vectors/rectangle_5832_x2.svg
+#  - assets/vectors/group_71_x2.svg
+#  - assets/vectors/rectangle_58111_x2.svg
+#  - assets/vectors/image_10_x2.svg
+#  - assets/vectors/battery_1_x2.svg
+#  - assets/vectors/vector_20_x2.svg
+#  - assets/vectors/vector_33_x2.svg
+#  - assets/vectors/rectangle_5806_x2.svg
+#  - assets/vectors/vector_1_x2.svg
+#  - assets/vectors/vector_31_x2.svg
+#  - assets/vectors/vector_32_x2.svg
+#  - assets/vectors/vector_14_x2.svg
+#  - assets/vectors/ellipse_452_x2.svg
+#  - assets/vectors/ellipse_453_x2.svg
+#  - assets/vectors/vector_5_x2.svg
+#  - assets/vectors/rectangle_581_x2.svg
+#  - assets/vectors/vector_10_x2.svg
+#  - assets/vectors/rectangle_5822_x2.svg
+#  - assets/vectors/battery_2_x2.svg
+#  - assets/vectors/image_5_x2.svg
+#  - assets/vectors/vector_7_x2.svg
+#  - assets/vectors/rectangle_5805_x2.svg
+#  - assets/vectors/rectangle_5838_x2.svg
+#  - assets/vectors/vector_2_x2.svg
+#  - assets/vectors/vector_11_x2.svg
+#  - assets/vectors/battery_10_x2.svg
+#  - assets/vectors/rectangle_5804_x2.svg
+#  - assets/vectors/rectangle_5823_x2.svg
+#  - assets/vectors/image_x2.svg
+#  - assets/vectors/rectangle_5831_x2.svg
+#  - assets/vectors/rectangle_5816_x2.svg
+#  - assets/vectors/vector_19_x2.svg
+#  - assets/vectors/rectangle_40171_x2.svg
+#  - assets/vectors/folder_fill_x2.svg
+#  - assets/vectors/rectangle_5818_x2.svg
+#  - assets/vectors/img_rol_x2.svg
+#  - assets/vectors/vector_x2.svg
+#  - assets/vectors/image_11_x2.svg
+#  - assets/vectors/rectangle_582_x2.svg
+#  - assets/vectors/vector_13_x2.svg
+#  - assets/vectors/rectangle_5808_x2.svg
+#  - assets/vectors/battery_8_x2.svg
+#  - assets/vectors/ellipse_2_x2.svg
+#  - assets/vectors/rectangle_5837_x2.svg
+#  - assets/vectors/fe_loop_2_x2.svg
+
