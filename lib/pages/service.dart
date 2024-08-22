@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/bill_service.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_app/pages/review_service.dart';
@@ -192,7 +193,7 @@ class _ServiceState extends State<Service> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ReviewScreen(
+                      builder: (context) => BillServiceScreen(
                         bodyPart: _selectedBodyPartType!,
                         partPrice: _bodyPartPrices[_selectedBodyPartType!]!,
                         repairCost: _repairCosts[_selectedBodyPartType!]!,

@@ -12,7 +12,7 @@ import 'package:flutter_app/pages/map_screen.dart';
 import 'package:flutter_app/pages/folder.dart';
 
 class MainScreen extends StatelessWidget {
-  final List<Map<String, dynamic>> savedComparisons = []; // Danh sách lưu các giá trị so sánh
+  final List<Map<String, dynamic>> savedComparisons = [];
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,17 @@ class MainScreen extends StatelessWidget {
           onPressed: () {},
         ),
         actions: [
+          IconButton(
+            icon: Icon(Icons.notifications, color: Colors.black),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Thongbao(),
+                ),
+              );
+            },
+          ),
           IconButton(
             icon: Icon(Icons.circle_outlined, color: Colors.black),
             onPressed: () {},
@@ -60,11 +71,8 @@ class MainScreen extends StatelessWidget {
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
               children: [
-                // _buildGridItem(context, 'assets/images/xevang.png', 'Model Car', ModelCar()),
                 _buildGridItem(context, 'assets/images/camera.png', 'Máy Ảnh', Camera(savedComparisons: savedComparisons)),
-                // _buildGridItem(context, 'assets/images/xequay.png', 'Compare', Compare()),
                 _buildGridItem(context, 'assets/images/service.png', 'Dịch Vụ', Service(diffArea: 0.0, diffDistance: 0.0)),
-                // _buildGridItem(context, 'assets/images/trogiup.png', 'Contact', Contact()),
               ],
             ),
           ),
@@ -75,30 +83,14 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Hành động khi nhấn nút giữa
-        },
-        child: Icon(Icons.home, color: Colors.white),
-        backgroundColor: Colors.black,
-        elevation: 4.0,
-      ),
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 8.0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
-              icon: Icon(Icons.notifications, color: Colors.black),
+              icon: Icon(Icons.home, color: Colors.black),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Thongbao(),
-                  ),
-                );
+                // Hành động khi nhấn nút Home
               },
             ),
             IconButton(
