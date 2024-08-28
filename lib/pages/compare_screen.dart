@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:image/image.dart' as img;
-import 'package:http/http.dart' as http;
 import 'package:flutter_app/pages/service.dart';
 
 class CompareScreen extends StatelessWidget {
@@ -14,52 +13,49 @@ class CompareScreen extends StatelessWidget {
     required this.savedComparisons,
   });
 
-  // Phương thức gọi API YOLO
-  Future<Uint8List> fetchTrainedImageFromAPI(String apiUrl) async {
+  // Hàm so sánh ảnh bị hỏng với ảnh từ model (được tích hợp API sau)
+  Future<Map<String, dynamic>> compareImages() async {
     try {
-      final response = await http.get(Uri.parse(apiUrl));
+      final image1Data = await File(damagedImage.path).readAsBytes();
 
-      if (response.statusCode == 200) {
-        return response.bodyBytes;
-      } else {
-        throw Exception('Lỗi khi lấy hình ảnh từ API: ${response.statusCode}');
+      // Gọi API YOLO để lấy ảnh đã qua xử lý
+      final image2Data = await fetchTrainedImageFromAPI('http://127.0.0.1:8080/detection');
+
+      final img1 = img.decodeImage(image1Data);
+      final img2 = img.decodeImage(image2Data);
+
+      if (img1 == null || img2 == null) {
+        return {'error': 'Không thể tải hình ảnh hoặc hình ảnh không hợp lệ.'};
       }
+
+      final targetWidth = img1.width;
+      final targetHeight = img1.height;
+      final resizedImage2 = img.copyResize(img2, width: targetWidth, height: targetHeight);
+
+      final difference = getDifference(img1, resizedImage2);
+      final diffPixels = countDiffPixels(difference);
+
+      final pixel_to_meter = 0.0002645833;
+      final diffDistance = diffPixels * pixel_to_meter;
+      final pixel_area_m2 = pixel_to_meter * pixel_to_meter;
+      final diffArea = diffPixels * pixel_area_m2;
+
+      return {
+        'diffImage': difference,
+        'diffPixels': diffPixels,
+        'diffDistance': diffDistance,
+        'diffArea': diffArea,
+      };
     } catch (e) {
-      throw Exception('Không thể kết nối tới API YOLO: $e');
+      return {'error': 'Đã xảy ra lỗi: $e'};
     }
   }
 
-  Future<Map<String, dynamic>> compareImages() async {
-    final image1Data = await File(damagedImage.path).readAsBytes();
-
-    // Gọi API YOLO để lấy ảnh đã qua xử lý
-    final image2Data = await fetchTrainedImageFromAPI('http://127.0.0.1:8080/detection');
-
-    final img1 = img.decodeImage(image1Data);
-    final img2 = img.decodeImage(image2Data);
-
-    if (img1 == null || img2 == null) {
-      return {'error': 'Không thể tải hình ảnh.'};
-    }
-
-    final targetWidth = img1.width;
-    final targetHeight = img1.height;
-    final resizedImage2 = img.copyResize(img2, width: targetWidth, height: targetHeight);
-
-    final difference = getDifference(img1, resizedImage2);
-    final diffPixels = countDiffPixels(difference);
-
-    final pixel_to_meter = 0.0002645833;
-    final diffDistance = diffPixels * pixel_to_meter;
-    final pixel_area_m2 = pixel_to_meter * pixel_to_meter;
-    final diffArea = diffPixels * pixel_area_m2;
-
-    return {
-      'diffImage': difference,
-      'diffPixels': diffPixels,
-      'diffDistance': diffDistance,
-      'diffArea': diffArea,
-    };
+  // Giả lập hàm gọi API để lấy ảnh đã qua xử lý từ YOLO
+  Future<Uint8List> fetchTrainedImageFromAPI(String url) async {
+    // Thực hiện gọi API tại đây và trả về dữ liệu ảnh dưới dạng Uint8List
+    // Ở đây chỉ là giả lập với dữ liệu tạm thời
+    return await File(damagedImage.path).readAsBytes(); // Thay bằng logic thực tế
   }
 
   @override
