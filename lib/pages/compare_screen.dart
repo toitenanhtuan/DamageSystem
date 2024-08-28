@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:image/image.dart' as img;
+import 'package:http/http.dart' as http;
 import 'package:flutter_app/pages/service.dart';
 
 class CompareScreen extends StatelessWidget {
@@ -13,17 +14,29 @@ class CompareScreen extends StatelessWidget {
     required this.savedComparisons,
   });
 
-  // Hàm so sánh ảnh bị hỏng với ảnh từ model (được tích hợp API sau)
+  // Phương thức gọi API YOLO
+  Future<Uint8List> fetchTrainedImageFromAPI(String apiUrl) async {
+    try {
+      final response = await http.get(Uri.parse(apiUrl));
+
+      if (response.statusCode == 200) {
+        return response.bodyBytes;
+      } else {
+        throw Exception('Lỗi khi lấy hình ảnh từ API: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Không thể kết nối tới API YOLO: $e');
+    }
+  }
+
   Future<Map<String, dynamic>> compareImages() async {
     final image1Data = await File(damagedImage.path).readAsBytes();
 
-    // Giả sử ảnh được training từ model là một hình ảnh mẫu để so sánh.
-    // Ảnh này sẽ được tải từ một nguồn API trong tương lai.
-    // final image2Data = await fetchTrainedImageFromAPI();
+    // Gọi API YOLO để lấy ảnh đã qua xử lý
+    final image2Data = await fetchTrainedImageFromAPI('http://127.0.0.1:8080/detection');
 
-    // Tạm thời sử dụng ảnh 1 để làm ảnh 2 cho việc kiểm tra
     final img1 = img.decodeImage(image1Data);
-    final img2 = img1; // Thay thế bằng dữ liệu ảnh từ model sau
+    final img2 = img.decodeImage(image2Data);
 
     if (img1 == null || img2 == null) {
       return {'error': 'Không thể tải hình ảnh.'};
